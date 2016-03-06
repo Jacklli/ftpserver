@@ -1,9 +1,11 @@
 #include "sock.h"
 sock::sock() {
-    this->s = s;
-    this->sflag = sflag;
-    this->addr = addr;
+}
+sock::initSock() {
+    this->s = socket(PF_INET, SOCK_STREAM, 0);
+    bind(this->s, (struct sockaddr*) &(this->addr), sizeof(this->addr))
     this->setNonblock();
+    listen(this->s, 511);
 }
 
 sock::setNonBlock() {

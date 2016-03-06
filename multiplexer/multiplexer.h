@@ -20,12 +20,12 @@
 
 class multiplexer {
 public:
-    multiplexer(unsigned short multimplexerId);
+    multiplexer(unsigned short multimplexerId = 0);    // 0 for select, 1 for poll, 2 for epoll
     ~multiplexer();
     void run();
 private:
-    void initMultiplexer();
     unsigned short multiplexerId;
+    selector *st;
 };
 
 #endif  /* _MULTIPLEXER_H */
